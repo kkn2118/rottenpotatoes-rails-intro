@@ -16,6 +16,11 @@ class MoviesController < ApplicationController
     # @movies = Movie.all
     ratings_query=(@ratings_to_show==@all_ratings)? nil :@ratings_to_show
     @movies=Movie.with_ratings(ratings_query)
+
+    allowed_sorts= [title release_date]
+    @sort_by= allowed_sorts.include?(params[:sort_by])? params[:sort_by] :nil
+    @movies= @movies.order(@sort_by) if @sort_by.present?
+
   end
 
   def new
