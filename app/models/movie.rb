@@ -1,9 +1,9 @@
 class Movie < ActiveRecord::Base
 
-  ratings=['G','PG-13,PG,R']
+  RATINGS=['G','PG-13,PG,R']
 
   def self.all_ratings
-    ratings
+    RATINGS
   end
   def self.with_ratings(ratings_list)
     return all if ratings_list.nil?
